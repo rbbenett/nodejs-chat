@@ -10,12 +10,12 @@ function App() {
   return (
     <Router>
       <div className="App">
-    <UserContext.Provider value={{user, setUser}}>
-    <Switch>
-      <Route exact path="/" component={ Home }/>
-      <Route exact path="/chat" component={ Chat }/>
-    </Switch>
-    </UserContext.Provider>
+        <UserContext.Provider value={{ user, setUser }}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/chat" component={Chat} />
+          </Switch>
+        </UserContext.Provider>
       </div>
     </Router>
 
