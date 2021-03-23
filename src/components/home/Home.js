@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { UserContext } from '../../UserContext';
 
 const Home = () => {
-  const {user,setUser} = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
   const setAsJohn = () => {
     const john = {
       name: 'John',
@@ -24,9 +24,32 @@ const Home = () => {
   }
   return (
     <div>
-      <h1>Home {JSON.stringify(user)}</h1>
-      <button onClick={setAsJohn}>Set as John</button>
-      <button onClick={setAsTom}>Set as Tom</button>
+      <div className="row">
+        <div className="col s12 m6">
+          <div className="card blue-grey darken-1">
+            <div className="card-content white-text">
+              <span className="card-title">Welcome {user ? user.name : ''}</span>
+              <div className="row">
+                <form>
+                  <div className="row">
+                    <div className="input-field col s12">
+                      <input placeholder="Enter a room name" id="room" type="text" className="validate" />
+                      <label htmlFor="room">Room</label>
+                    </div>
+                  </div>
+                  <button className="btn">Create Room</button>
+                </form>
+              </div>
+            </div>
+            <div className="card-action">
+              <a href="#"
+                onClick={setAsJohn}>Set as John</a>
+              <a href="#" onClick={setAsTom}>Set as Tom</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <Link to={'/chat'}>
         <button>Go to Chat</button>
       </Link>
