@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { UserContext } from '../../UserContext';
 
 const Chat = () => {
-  const {user,setUser} = useContext(UserContext)
-
+  const { user, setUser } = useContext(UserContext)
+  let { room_id, room_name } = useParams();
   return (
     <div>
-     <h1>Chat {JSON.stringify(user)}</h1>
-     <Link to={'/'}>
+      <div>{room_id} {room_name}</div>
+      <h1>Chat {JSON.stringify(user)}</h1>
+      <Link to={'/'}>
         <button>Go to Home</button>
       </Link>
     </div>
