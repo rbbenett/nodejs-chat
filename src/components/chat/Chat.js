@@ -2,7 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../UserContext';
 import { useParams } from 'react-router-dom';
 import io from 'socket.io-client';
+import Messages from './messages/Messages';
+
 let socket;
+
 const Chat = () => {
   const ENDPOINT = 'localhost:5000';
 
@@ -35,6 +38,7 @@ const Chat = () => {
       <div>{room_id} {room_name}</div>
       <h1>Chat {JSON.stringify(user)}</h1>
       <pre>{JSON.stringify(messages, null, '\t')}</pre>
+      <Messages messages={messages} user_id={user.id} />
       <form action="" onSubmit={sendMessage}>
         <input type="text"
           value={message}
