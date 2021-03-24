@@ -7,6 +7,11 @@ let socket;
 
 const Home = () => {
   const ENDPOINT = 'localhost:5000';
+
+  const { user, setUser } = useContext(UserContext);
+  const [room, setRoom] = useState('');
+  const [rooms, setRooms] = useState([]);
+
   useEffect(() => {
     socket = io(ENDPOINT);
     return () => {
@@ -15,9 +20,11 @@ const Home = () => {
     }
   }, [ENDPOINT])
 
-  const { user, setUser } = useContext(UserContext);
-  const [room, setRoom] = useState('');
-  const [rooms, setRooms] = useState([]);
+  useEffect(() => {
+    socket.on('output-rooms', rooms => {
+      setRooms(rooms)
+    })
+  }, [])
 
   useEffect(() => {
     socket.on('room-created', room => {
