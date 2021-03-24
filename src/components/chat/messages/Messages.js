@@ -1,4 +1,5 @@
 import React from 'react'
+import Message from "../message/Message"
 
 const Messages = ({ messages, user_id }) => {
   return (
@@ -6,7 +7,7 @@ const Messages = ({ messages, user_id }) => {
       Messages {user_id}
       {/* {JSON.stringify(messages)} */}
       {messages.map((message, i) => (
-        <div key={message._id}>{message.text}</div>
+        <Message key={message._id} message={message} current_uid={user_id}/>
       ))}
     </div>
   )
